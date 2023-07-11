@@ -7,7 +7,7 @@ const cors = require('cors')
 const { Sequelize } = require('sequelize')
 const path = require("path")
 
-
+const PG_URI='PG_URI=https://kzpuwykecupbyqdjibud.supabase.co'
 //middleware
 app.use(express.json())
 app.use(cors())
