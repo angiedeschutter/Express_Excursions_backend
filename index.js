@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public', 'build')));
 
 // SEQUELIZE CONNECTION
-const sequelize = new Sequelize(process.env.PG_URI)
+const sequelize = new Sequelize(process.env.PG_URI,{dialect:'postgres'})
 
 // ROOT
 app.get('/', (req, res) => {
