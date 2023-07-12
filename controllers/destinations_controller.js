@@ -1,12 +1,15 @@
 // DEPENDENCIES
 const destinations = require('express').Router()
 const db = require('../models')
+import env from "dotenv"
 const { Destination } = db
+import { createClient } from '@supabase/supabase-js'
+const supabase = createClient(process.env.DATABASE_URL,process.env.DATABASE_KEY);
 
 // FIND ALL DESTINATIONS
 destinations.get('/', async (req, res) => {
     try {
-        const foundDestinations = await Destination.findAll()
+        const foundDestinations = await supabase.from("destinations").select()
         res.status(200).json(foundDestinations)
     } catch (Error) {
         console.log(Error)
@@ -17,9 +20,11 @@ destinations.get('/', async (req, res) => {
 // FIND A DESTINATION
 destinations.get('/:name', async (req, res) => {
     try {
-        const foundDestination = await Destination.findOne({
-            where: { name: req.params.name }
-        })
+        const foundDestination = await supabase
+        .from("desintations")
+        .select()
+        .eq("name", request.params.id)
+    
         res.status(200).json(foundDestination)
     } catch (Error) {
         console.log(Error)
