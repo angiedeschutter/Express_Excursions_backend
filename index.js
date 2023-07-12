@@ -6,7 +6,7 @@ const app = express()
 const cors = require('cors')
 const { Sequelize } = require('sequelize')
 const path = require("path")
-const { bodyParser } =require( 'body-parser')
+const  bodyParser  =require( 'body-parser')
 
 //middleware
 app.use(express.json())
@@ -16,7 +16,6 @@ app.use(cors({
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json())
-// SEQUELIZE CONNECTION
 
 
 // ROOT
