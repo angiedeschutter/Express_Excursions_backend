@@ -1,9 +1,11 @@
 // DEPENDENCIES
+require('dotenv').config()
 const destinations = require('express').Router()
 const db = require('../models')
 const { Destination } = db
 const { createClient } =require( '@supabase/supabase-js')
 const supabase = createClient(DATABASE_URL,DATABASE_KEY);
+
 
 // FIND ALL DESTINATIONS
 destinations.get('/', async (req, res) => {
