@@ -2,7 +2,7 @@
 const destinations = require('express').Router()
 const db = require('../models')
 const { Destination } = db
-import { createClient } from '@supabase/supabase-js'
+const { createClient } =require( '@supabase/supabase-js')
 const supabase = createClient(process.env.DATABASE_URL,process.env.DATABASE_KEY);
 
 // FIND ALL DESTINATIONS
