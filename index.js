@@ -7,22 +7,20 @@ const cors = require('cors')
 const { Sequelize } = require('sequelize')
 const path = require("path")
 
-const PG_URI='PG_URI=https://kzpuwykecupbyqdjibud.supabase.co'
+const PG_URI='https://kzpuwykecupbyqdjibud.supabase.co'
 //middleware
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'public', 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 // SEQUELIZE CONNECTION
 const sequelize = new Sequelize(PG_URI,{dialect:'postgres'})
 
 // ROOT
-app.get('/', (req, res) => {
-    res.status(200).json({
-        message: 'Welcome to Express Excusions'
+app.get('/*', function(req,res){
+        res.sendFile(path.join(__dirname, 'build','index.html'))
     })
-})
 
 // CONTROLLERS
 
