@@ -3,21 +3,21 @@
     "username": "postgres",
     "password": "AngieSQL",
     "database": "Express_Excursions",
-    "host": "127.0.0.1",
+    "host": "db.kzpuwykecupbyqdjibud.supabase.co",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "AngieSQL",
     "database": "Express_Excursions",
-    "host": "127.0.0.1",
+    "host": "db.kzpuwykecupbyqdjibud.supabase.co",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "AngieSQL",
     "database": "Express_Excursions",
-    "host": "127.0.0.1",
+    "host": "db.kzpuwykecupbyqdjibud.supabase.co",
     "dialect": "postgres"
   }
 }
