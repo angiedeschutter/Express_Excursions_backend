@@ -10,7 +10,9 @@ const path = require("path")
 
 //middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin:"https://express-excursions.onrender.com"
+}))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'build')));
 
