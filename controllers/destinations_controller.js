@@ -1,7 +1,6 @@
 // DEPENDENCIES
 const destinations = require('express').Router()
 const db = require('../models')
-import env from "dotenv"
 const { Destination } = db
 import { createClient } from '@supabase/supabase-js'
 const supabase = createClient(process.env.DATABASE_URL,process.env.DATABASE_KEY);
