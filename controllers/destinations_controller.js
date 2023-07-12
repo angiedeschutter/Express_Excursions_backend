@@ -12,9 +12,15 @@ const supabase = createClient(DATABASE_URL,DATABASE_KEY);
 
 // FIND ALL DESTINATIONS
 destinations.get('/', async (req, res) => {
-    res.status(200).json({
-        message: 'Welcome to Express Excusions'
-    })
+    try {
+        const {foundDestinations, Error} = await supabase
+        .from("destinations")
+        .select()
+        return res.send(foundDestinations)
+    } catch (Error) {
+        console.log(Error)
+        res.status(500).send('Oh no, could not find destinations')
+    }
 })
 
 // FIND A DESTINATION
@@ -23,8 +29,7 @@ destinations.get('/:name', async (req, res) => {
         const foundDestination = await supabase
         .from("desintations")
         .select()
-        .eq("name", request.params.id)
-    
+        .is("name", request.params.name)
         res.status(200).json(foundDestination)
     } catch (Error) {
         console.log(Error)
