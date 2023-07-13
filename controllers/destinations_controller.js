@@ -29,6 +29,7 @@ destinations.get('/:name', async (req, res) => {
         let { data } = await supabase
             .from('destinations')
             .select('name')
+            .eq('name', req.params.name)
             console.log(data)
             return res.send(data)
        
