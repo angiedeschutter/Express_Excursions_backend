@@ -10,12 +10,12 @@ const {supabase} = require('../supabase')
 // FIND ALL DESTINATIONS
 destinations.get('/', async (req, res) => {
     try {
-        const {foundDestinations, Error} = await supabase
+        const {data, error} = await supabase
         .from("destinations")
         .select()
-        return res.send(foundDestinations)
-    } catch (Error) {
-        console.log(Error)
+        return data
+    } catch (error) {
+        console.log(error)
         res.status(500).send('Oh no, could not find destinations')
     }
 })
@@ -23,12 +23,12 @@ destinations.get('/', async (req, res) => {
 // FIND A DESTINATION
 destinations.get('/:name', async (req, res) => {
     try {
-        const foundDestination = await supabase
+        const {data, error} = await supabase
         .from("desintations")
         .select()
-        .is("name", request.params.name)
+        .eq("name", request.params.name)
 
-        res.send(foundDestination)
+        return data
     } catch (Error) {
         console.log(Error)
         res.status(500).send('Oh no, could not find destination')
