@@ -14,7 +14,7 @@ destinations.get('/', async (req, res) => {
             .from('destinations')
             .select()
         console.log(destinations)
-        return destinations
+        
     } catch (error) {
         console.log(error)
         res.status(500).send('Oh no, could not find destinations')
@@ -29,7 +29,7 @@ destinations.get('/:name', async (req, res) => {
             .from('destinations')
             .select('name')
         console.log(destinations)
-        return destinations
+       
     } catch (Error) {
         console.log(Error)
         res.status(500).send('Oh no, could not find destination')
