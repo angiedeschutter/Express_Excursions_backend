@@ -3,17 +3,18 @@ require('dotenv').config()
 const destinations = require('express').Router()
 const db = require('../models')
 const { Destination } = db
-const {supabase} = require('../supabase')
+const { supabase } = require('../supabase')
 
 
 
 // FIND ALL DESTINATIONS
 destinations.get('/', async (req, res) => {
     try {
-        const {data, error} = await supabase
-        .from("destinations")
-        .select()
-        return data
+        let { data: destinations, error } = await supabase
+            .from('destinations')
+            .select()
+        console.log(destinations)
+        return destinations
     } catch (error) {
         console.log(error)
         res.status(500).send('Oh no, could not find destinations')
@@ -23,12 +24,12 @@ destinations.get('/', async (req, res) => {
 // FIND A DESTINATION
 destinations.get('/:name', async (req, res) => {
     try {
-        const {data, error} = await supabase
-        .from("desintations")
-        .select()
-        .eq("name", request.params.name)
 
-        return data
+        let { data: destinations, error } = await supabase
+            .from('destinations')
+            .select('name')
+        console.log(destinations)
+        return destinations
     } catch (Error) {
         console.log(Error)
         res.status(500).send('Oh no, could not find destination')
