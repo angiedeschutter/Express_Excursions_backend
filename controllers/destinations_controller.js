@@ -7,6 +7,7 @@ const { supabase } = require('../supabase')
 
 
 
+
 // FIND ALL DESTINATIONS
 destinations.get('/', async (req, res) => {
     try {
@@ -14,7 +15,7 @@ destinations.get('/', async (req, res) => {
             .from('destinations')
             .select()
             console.log(data)
-            return res.send(data)
+           
     } catch (error) {
         console.log(error)
         res.status(500).send('Oh no, could not find destinations')
