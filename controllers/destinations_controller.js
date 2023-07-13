@@ -10,10 +10,10 @@ const { supabase } = require('../supabase')
 // FIND ALL DESTINATIONS
 destinations.get('/', async (req, res) => {
     try {
-        let { data: destinations, error } = await supabase
+        let { data } = await supabase
             .from('destinations')
             .select()
-            res.status(200).json(destinations)
+            res.status(200).json(data)
         
     } catch (error) {
         console.log(error)
@@ -25,10 +25,10 @@ destinations.get('/', async (req, res) => {
 destinations.get('/:name', async (req, res) => {
     try {
 
-        let { data: destinations, error } = await supabase
+        let { data } = await supabase
             .from('destinations')
             .select('name')
-            res.status(200).json(destinations)
+            res.status(200).json(data)
        
     } catch (Error) {
         console.log(Error)
