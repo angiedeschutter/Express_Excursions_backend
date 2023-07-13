@@ -13,8 +13,8 @@ destinations.get('/', async (req, res) => {
         let { data } = await supabase
             .from('destinations')
             .select()
-            res.status(200).json(data)
-        
+            console.log(data)
+            return res.send(data)
     } catch (error) {
         console.log(error)
         res.status(500).send('Oh no, could not find destinations')
@@ -28,7 +28,8 @@ destinations.get('/:name', async (req, res) => {
         let { data } = await supabase
             .from('destinations')
             .select('name')
-            res.status(200).json(data)
+            console.log(data)
+            return res.send(data)
        
     } catch (Error) {
         console.log(Error)
